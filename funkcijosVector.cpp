@@ -3,13 +3,13 @@
 #include <fstream>
 #include <iomanip>
 #include <limits>
-#include <vector>
+#include "vector.h"
 #include <string>
 #include <sstream>
 #include <algorithm>
 #include <chrono>
 
-void readDataVector(std::vector<Studentas> &studentai, const std::string &failoVardas)
+void readDataVector(vector<Studentas> &studentai, const std::string &failoVardas)
 {
     std::ifstream file(failoVardas);
     if (!file)
@@ -31,7 +31,7 @@ void readDataVector(std::vector<Studentas> &studentai, const std::string &failoV
         Studentas studentas(vardas, pavarde);
 
         int pazymys;
-        std::vector<int> laik;
+        vector<int> laik;
         studentas.setNamuDarbai({});
         while (iss >> pazymys)
         {
@@ -97,7 +97,7 @@ void generateStudentFilesVector(int size)
 
 void rusiuotStudentusVector(const std::string &failoVardas) // 1 strategija
 {
-    std::vector<Studentas> studentai;
+    vector<Studentas> studentai;
 
     auto readStart = std::chrono::high_resolution_clock::now();
     readDataVector(studentai, failoVardas);
@@ -113,7 +113,7 @@ void rusiuotStudentusVector(const std::string &failoVardas) // 1 strategija
     std::cout << "Time taken to sort data: " << sortElapsed.count() << "s\n";
 
     auto divideStart = std::chrono::high_resolution_clock::now();
-    std::vector<Studentas> kietiakai, vargsiukai;
+    vector<Studentas> kietiakai, vargsiukai;
     for (const auto &studentas : studentai)
     {
         double galutinisBalas = 0.4 * studentas.calcVidurkis() + 0.6 * studentas.getEgzaminas();
@@ -154,7 +154,7 @@ void rusiuotStudentusVector(const std::string &failoVardas) // 1 strategija
 
 void rusiuotStudentusVector2(const std::string &failoVardas) //2 startegija
 {
-    std::vector<Studentas> studentai;
+    vector<Studentas> studentai;
 
     auto readStart = std::chrono::high_resolution_clock::now();
     readDataVector(studentai, failoVardas);
@@ -171,7 +171,7 @@ void rusiuotStudentusVector2(const std::string &failoVardas) //2 startegija
     std::cout << std::fixed << std::setprecision(7) << "Time taken to sort data: " << sortElapsed.count() << "s\n";
 
     auto divideStart = std::chrono::high_resolution_clock::now();
-    std::vector<Studentas> vargsiukai;
+    vector<Studentas> vargsiukai;
 
     for (auto it = studentai.begin(); it != studentai.end();)
     {
@@ -215,7 +215,7 @@ void rusiuotStudentusVector2(const std::string &failoVardas) //2 startegija
 
 void rusiuotStudentusVector3(const std::string &failoVardas) //3 startegija
 {
-    std::vector<Studentas> studentai;
+    vector<Studentas> studentai;
 
     auto readStart = std::chrono::high_resolution_clock::now();
     readDataVector(studentai, failoVardas);
@@ -232,7 +232,7 @@ void rusiuotStudentusVector3(const std::string &failoVardas) //3 startegija
     std::cout << std::fixed << std::setprecision(7) << "Time taken to sort data: " << sortElapsed.count() << "s\n";
 
     auto divideStart = std::chrono::high_resolution_clock::now();
-    std::vector<Studentas> kietiakai, vargsiukai;
+    vector<Studentas> kietiakai, vargsiukai;
     auto iter = std::stable_partition(studentai.begin(), studentai.end(), [](const Studentas &studentas) {
         return studentas.calcGalutinis(true) >= 5.0;
     });
