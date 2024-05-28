@@ -190,6 +190,10 @@
 5. Locate the compiled installer executable (e.g., setup.exe) in the output directory specified in your script.
 6. Run the installer to test it and ensure everything works as expected.
 
+### Google Tests 
+![image](https://github.com/Kaspa06/VectorClass/assets/159523672/418dca40-eb2a-4a38-8743-3fad8fb1cf24)
+
+
 # Abstract Class "Zmogus"
 
 #### An abstract class in C++ is a class that contains at least one pure virtual function. A pure virtual function is a virtual function for which we provide only the declaration in the base class, without providing any implementation. Abstract classes are designed to be used as base classes, and they cannot be instantiated directly. Instead, they are intended to serve as interfaces that define a common set of methods that derived classes must implement.
