@@ -15,7 +15,7 @@
 ### Constructors
 
 1. Default Constructor
-   
+
    `vector():` Initializes an empty vector.
 
 2. Fill Constructor
@@ -125,6 +125,16 @@
 - `void uncreate():` Destroys elements and deallocates storage.
 - `void grow(size_type new_capacity = 1):` Grows the vector to accommodate more elements.
 - `void unchecked_append(const T& val):` Appends an element without checking capacity.
+
+### Testing `std::vector` and `vector` speed and reallocations
+
+| Size     | std::vector Time | Custom vector Time | std::vector Reallocations | vector Reallocations |
+| -------- | ---------------- | ------------------ | ------------------------- | -------------------- |
+| 10000    | 0 s              | 0 s                | 14                        | 14                   |
+| 100000   | 0.001994 s       | 0.001995 s         | 17                        | 17                   |
+| 1000000  | 0.020944 s       | 0.016955 s         | 20                        | 20                   |
+| 10000000 | 0.206448 s       | 0.183509 s         | 24                        | 24                   |
+| 10000000 | 2.0415s          | 1.77326s           | 27                        | 27                   |
 
 # Abstract Class "Zmogus"
 
