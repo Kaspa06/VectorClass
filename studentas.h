@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include "vector.h"
 
 class Zmogus {
 public:
@@ -18,7 +19,7 @@ class Studentas : public Zmogus {
 private:
     std::string vardas;
     std::string pavarde;
-    std::vector<int> nd_rezultatai;
+    vector<int> nd_rezultatai;
     int egzaminas;
 public:
     // Constructor
@@ -45,8 +46,8 @@ public:
     void setPavarde(std::string pavarde);
     std::string getPavarde() const;
 
-    void setNamuDarbai(const std::vector<int> &nd);
-    std::vector<int> getNamuDarbai() const;
+    void setNamuDarbai(const vector<int> &nd);
+    vector<int> getNamuDarbai() const;
 
     void addNamuDarbai(int pazymys);
 
