@@ -4,7 +4,6 @@
 #include "studentas.h"
 #include "testRules.h"
 #include <iostream>
-#include <vector>
 #include <limits>
 #include <deque>
 #include <list>
@@ -23,22 +22,21 @@
 #include "vector.h"
 #include "VectorTest.h"
 
-using namespace std;
 
-std::vector<string> listFilesInDirectory() {
-    std::vector<string> files;
+vector<std::string> listFilesInDirectory() {
+    vector<std::string> files;
     DIR *dir;
     struct dirent *ent;
     if ((dir = opendir(".")) != NULL) {
         while ((ent = readdir(dir)) != NULL) {
-            string filename = ent->d_name;
+            std::string filename = ent->d_name;
             if (filename != "." && filename != "..") {
                 files.push_back(filename);
             }
         }
         closedir(dir);
     } else {
-        cerr << "Could not open the directory." << endl;
+        std::cerr << "Could not open the directory." << std::endl;
     }
     return files;
 }
@@ -47,11 +45,11 @@ int main()
 {
     srand(static_cast<unsigned int>(time(nullptr)));
 
-    std::vector<Studentas> studentai;
+    vector<Studentas> studentai;
     int pasirinkimas;
     int rusiavimoTipas;
-    std::vector<int> sizes = {1000, 10000, 100000, 1000000, 10000000};
-    std::vector<Studentas> kietiakiai, vargsiukai;
+    vector<int> sizes = {1000, 10000, 100000, 1000000, 10000000};
+    vector<Studentas> kietiakiai, vargsiukai;
 
     do
     {
@@ -101,12 +99,12 @@ int main()
             case 3:
                 try
                 {
-                    cout << fixed << setprecision(2);
-                    cout << "Studentu galutiniai balai:\n";
-                    cout << "----------------------------------------------------------------\n";
-                    cout << "Vardas" << setw(15) << "Pavarde" << setw(20) << "Galutinis (Vid.)"
-                         << setw(20) << "Galutinis (Med.)\n";
-                    cout << "----------------------------------------------------------------\n";
+                    std::cout << std::fixed << std::setprecision(2);
+                    std::cout << "Studentu galutiniai balai:\n";
+                    std::cout << "----------------------------------------------------------------\n";
+                    std::cout << "Vardas" << std::setw(15) << "Pavarde" << std::setw(20) << "Galutinis (Vid.)"
+                         << std::setw(20) << "Galutinis (Med.)\n";
+                    std::cout << "----------------------------------------------------------------\n";
 
                     for (int i = 0; i < 6; i++)
                     {
@@ -116,11 +114,11 @@ int main()
 
                         double galutinisVidurkis = naujasStudentas.calcGalutinis(true);
                         double galutineMediana = naujasStudentas.calcGalutinis(false);
-                        cout << left << setw(15) << naujasStudentas.getVardas() << setw(15)
-                             << naujasStudentas.getPavarde() << setw(20) << galutinisVidurkis << setw(20)
+                        std::cout << std::left << std::setw(15) << naujasStudentas.getVardas() << std::setw(15)
+                             << naujasStudentas.getPavarde() << std::setw(20) << galutinisVidurkis << std::setw(20)
                              << galutineMediana << "\n";
                     }
-                    cout << "----------------------------------------------------------------\n";
+                    std::cout << "----------------------------------------------------------------\n";
                 }
                 catch (const std::exception &e)
                 {
@@ -129,22 +127,22 @@ int main()
                 break;
              case 4: {
                     // List files in the directory
-                    std::vector<string> files = listFilesInDirectory();
+                    vector<std::string> files = listFilesInDirectory();
                     // Display available files
-                    cout << "Pasirinkite faila:" << endl;
+                    std::cout << "Pasirinkite faila:" << std::endl;
                     for (size_t i = 0; i < files.size(); ++i) {
-                        cout << i + 1 << " - " << files[i] << endl;
+                        std::cout << i + 1 << " - " << files[i] << std::endl;
                     }
                     // Get user choice
                     int failoPasirinkimas;
-                    cout << "Pasirinkimas: ";
-                    cin >> failoPasirinkimas;
-                    if (cin.fail() || failoPasirinkimas < 1 || failoPasirinkimas > static_cast<int>(files.size())) {
-                        throw invalid_argument("Netinkamas failo pasirinkimas.");
+                    std::cout << "Pasirinkimas: ";
+                    std::cin >> failoPasirinkimas;
+                    if (std::cin.fail() || failoPasirinkimas < 1 || failoPasirinkimas > static_cast<int>(files.size())) {
+                        throw std::invalid_argument("Netinkamas failo pasirinkimas.");
                     }
                     // Use the selected file
-                    string selectedFile = files[failoPasirinkimas - 1];
-                    cout << "Pasirinktas failas: " << selectedFile << endl;
+                    std::string selectedFile = files[failoPasirinkimas - 1];
+                    std::cout << "Pasirinktas failas: " << selectedFile << std::endl;
                     break;
                 }
             case 5:
