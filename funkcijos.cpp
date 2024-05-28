@@ -4,7 +4,7 @@
 #include <fstream>
 #include <iomanip>
 #include <limits>
-#include <vector>
+#include "vector.h"
 #include <string>
 #include <sstream>
 #include <algorithm>
@@ -34,7 +34,7 @@ bool sortByMediana(const Studentas &a, const Studentas &b)
     return medianaA < medianaB;
 }
 
-void spausdintiGalutiniusBalus(const std::vector<Studentas> &studentai, const std::string &isvedimoFailoVardas, int rusiavimoTipas)
+void spausdintiGalutiniusBalus(const vector<Studentas> &studentai, const std::string &isvedimoFailoVardas, int rusiavimoTipas)
 {
     std::ostream *out;
     std::ofstream fileOut;
@@ -49,31 +49,31 @@ void spausdintiGalutiniusBalus(const std::vector<Studentas> &studentai, const st
         out = &std::cout;
     }
 
-    std::vector<Studentas> surusiuotiStudentai = studentai;
+    vector<Studentas> surusiuotiStudentai = studentai;
 
     switch (rusiavimoTipas)
     {
     case 1:
-        sort(surusiuotiStudentai.begin(), surusiuotiStudentai.end(), sortByVardas);
+        std::sort(surusiuotiStudentai.begin(), surusiuotiStudentai.end(), sortByVardas);
         break;
     case 2:
-        sort(surusiuotiStudentai.begin(), surusiuotiStudentai.end(), sortByPavarde);
+        std::sort(surusiuotiStudentai.begin(), surusiuotiStudentai.end(), sortByPavarde);
         break;
     case 3:
-        sort(surusiuotiStudentai.begin(), surusiuotiStudentai.end(), sortByVidurkis);
+        std::sort(surusiuotiStudentai.begin(), surusiuotiStudentai.end(), sortByVidurkis);
         break;
     case 4:
-        sort(surusiuotiStudentai.begin(), surusiuotiStudentai.end(), sortByMediana);
+        std::sort(surusiuotiStudentai.begin(), surusiuotiStudentai.end(), sortByMediana);
         break;
     }
 
     *out << std::fixed << std::setprecision(2);
-    *out << "Studentų galutiniai balai:\n";
+    *out << "Studentu galutiniai balai:\n";
     *out << "----------------------------------------------------------------\n";
     *out << std::left << std::setw(15) << "Vardas" << std::setw(15) << "Pavarde" << std::setw(20) << "Galutinis (Vid.)" << std::setw(20) << "Galutinis (Med.)" << std::endl;
     *out << "----------------------------------------------------------------\n";
 
-for (const Studentas &studentas : surusiuotiStudentai)
+    for (const Studentas &studentas : surusiuotiStudentai)
     {
         double galutinisVidurkis = 0.4 * studentas.calcVidurkis() + 0.6 * studentas.getEgzaminas();
         double galutineMediana = 0.4 * studentas.calcMediana() + 0.6 * studentas.getEgzaminas();
@@ -87,7 +87,7 @@ for (const Studentas &studentas : surusiuotiStudentai)
     }
 }
 
-void manualInput(std::vector<Studentas> &studentai)
+void manualInput(vector<Studentas> &studentai)
 {
     char testi = 't';
     while (testi == 't' || testi == 'T')
@@ -95,15 +95,15 @@ void manualInput(std::vector<Studentas> &studentai)
         Studentas naujasStudentas;
         std::string temp;
 
-        std::cout << "Įveskite studento vardą: ";
+        std::cout << "Iveskite studento varda: ";
         std::cin >> temp;
         naujasStudentas.setVardas(temp);
 
-        std::cout << "Įveskite studento pavardę: ";
+        std::cout << "Iveskite studento pavarde: ";
         std::cin >> temp;
         naujasStudentas.setPavarde(temp);
 
-        std::cout << "Įveskite namų darbų pažymius (0 norint baigti): ";
+        std::cout << "Iveskite namu darbu pazymius (0 norint baigti): ";
         int pazymys;
         while (true)
         {
@@ -112,7 +112,7 @@ void manualInput(std::vector<Studentas> &studentai)
             {
                 std::cin.clear();
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                std::cout << "Neteisingai įvestas pažymys. Turi būti sveikasis skaičius nuo 0 iki 10." << std::endl;
+                std::cout << "Neteisingai Ivestas pazymys. Turi buti sveikasis skaicius nuo 0 iki 10." << std::endl;
                 continue;
             }
             if (pazymys == 0)
@@ -122,7 +122,7 @@ void manualInput(std::vector<Studentas> &studentai)
             naujasStudentas.getNamuDarbai().push_back(pazymys);
         }
 
-        std::cout << "Įveskite egzamino rezultatą: ";
+        std::cout << "Iveskite egzamino rezultata: ";
         while (true)
         {
             std::cin >> pazymys;
@@ -130,7 +130,7 @@ void manualInput(std::vector<Studentas> &studentai)
             {
                 std::cin.clear();
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                std::cout << "Neteisingai įvestas egzamino rezultatas. Turi būti sveikasis skaičius nuo 0 iki 10." << std::endl;
+                std::cout << "Neteisingai Ivestas egzamino rezultatas. Turi buti sveikasis skaicius nuo 0 iki 10." << std::endl;
                 continue;
             }
             break;
@@ -139,13 +139,13 @@ void manualInput(std::vector<Studentas> &studentai)
 
         studentai.push_back(naujasStudentas);
 
-        std::cout << "Ar norite įvesti dar vieną studentą? (t/n): ";
+        std::cout << "Ar norite Ivesti dar viena studenta? (t/n): ";
         std::cin >> testi;
     }
 }
 
 
-void generateGradesOnly(std::vector<Studentas> &studentai)
+void generateGradesOnly(vector<Studentas> &studentai)
 {
     for (Studentas &studentas : studentai)
     {
@@ -153,7 +153,7 @@ void generateGradesOnly(std::vector<Studentas> &studentai)
     }
 }
 
-void readFileDataFromFile(std::vector<Studentas> &studentai, const std::string &failoVardas)
+void readFileDataFromFile(vector<Studentas> &studentai, const std::string &failoVardas)
 {
     std::ifstream failas(failoVardas);
     if (!failas.is_open())
@@ -185,7 +185,8 @@ void readFileDataFromFile(std::vector<Studentas> &studentai, const std::string &
 
     failas.close();
 }
-void generateStudentFiles(const std::vector<int> &sizes) //padarius su istringstream laikai pamazes (pataisysiu)
+
+void generateStudentFiles(const vector<int> &sizes) //padarius su istringstream laikai pamazes (pataisysiu)
 {
     for (int size : sizes)
     {
@@ -215,7 +216,7 @@ void generateStudentFiles(const std::vector<int> &sizes) //padarius su istringst
     }
 }
 
-void rusiuotiStudentus(const std::vector<int> &sizes)
+void rusiuotiStudentus(const vector<int> &sizes)
 {
     for (size_t index = 0; index < sizes.size(); ++index)
     {
@@ -228,7 +229,7 @@ void rusiuotiStudentus(const std::vector<int> &sizes)
             continue;
         }
 
-        std::vector<Studentas> studentai, kietiakiai, vargsiukai;
+        vector<Studentas> studentai, kietiakiai, vargsiukai;
         std::string eilute;
         std::getline(inFile, eilute); // Skipping the header line
 
@@ -251,7 +252,7 @@ void rusiuotiStudentus(const std::vector<int> &sizes)
             }
 
             // Process grades (calculate average, etc.)
-            std::vector<int> grades = tempStudentas.getNamuDarbai();
+            vector<int> grades = tempStudentas.getNamuDarbai();
             if (!grades.empty())
             {
                 tempStudentas.setEgzaminas(grades.back()); // Set exam grade using a public setter method
@@ -266,7 +267,7 @@ void rusiuotiStudentus(const std::vector<int> &sizes)
 
         auto endRead = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsedRead = endRead - startRead;
-        std::cout << "Duomenų nuskaitymas iš " << fileName << " užtruko: " << elapsedRead.count() << " sekundžių." << std::endl;
+        std::cout << "Duomenu nuskaitymas is " << fileName << " uztruko: " << elapsedRead.count() << " sekundziu." << std::endl;
 
         auto startSort = std::chrono::high_resolution_clock::now();
 
@@ -288,7 +289,7 @@ void rusiuotiStudentus(const std::vector<int> &sizes)
 
         auto endSort = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsedSort = endSort - startSort;
-        std::cout << "Studentų rūšiavimas užtruko: " << elapsedSort.count() << " sekundžių." << std::endl;
+        std::cout << "Studentu rusiavimas uztruko: " << elapsedSort.count() << " sekundziu." << std::endl;
 
         std::ofstream kietiakiaiFile("kietiakiai.txt"), vargsiukaiFile("vargsiukai.txt");
 
@@ -315,6 +316,6 @@ void rusiuotiStudentus(const std::vector<int> &sizes)
         kietiakiaiFile.close();
         vargsiukaiFile.close();
 
-        std::cout << "Studentai iš " << fileName << " buvo sekmingai išrūšiuoti ir išsaugoti į atitinkamus failus." << std::endl;
+        std::cout << "Studentai is " << fileName << " buvo sekmingai isrusiuoti ir issaugoti i atitinkamus failus." << std::endl;
     }
 }
