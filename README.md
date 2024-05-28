@@ -4,24 +4,11 @@
     RAM: 16.0 GB (15.3 GB usable)
     SSD: WDC PC SN530 512Gb
     GPU: Integrated with CPU
+    OS: Windows 10 Pro 64-bit
 
-# Structures vs Classes
+# Introduction
 
-##### Data from 1.1
-
-| Task                          | 1000 students | 10000 students | 100000 students | 1000000 students | 10000000 students |
-| ----------------------------- | ------------- | -------------- | --------------- | ---------------- | ----------------- |
-| Time taken to read data       | 0.006987000s  | 0.064826000s   | 0.6326890s      | 6.262007000s     | 64.8594s          |
-| Time taken to sort data       | 0.000997000s  | 0.042884000s   | 0.2950890s      | 3.173142000s     | 30.564123s        |
-| Time taken to divide students | 0.000997000s  | 0.002991000s   | 0.0354300s      | 0.257002000s     | 2.654561s         |
-
-##### Data with "Rule of Five"
-
-| Task                          | 1000 students | 10000 students | 100000 students | 1000000 students | 10000000 students |
-| ----------------------------- | ------------- | -------------- | --------------- | ---------------- | ----------------- |
-| Time taken to read data       | 0.006981000s  | 0.063828000s   | 0.628348000s    | 6.200408000s     | 64.8594s          |
-| Time taken to sort data       | 0.000952000s  | 0.048868000s   | 0.245346400s    | 2.10981s         | 22.098095s        |
-| Time taken to divide students | 0.000000000s  | 0.002992000s   | 0.026930000s    | 0.34083900s      | 3.61350350s       |
+### This project provides an implementation of a dynamic array container in C++ named `vector`, similar to `std::vector` from the C++ Standard Library. This custom `vector` class template provides various functionalities to handle dynamic arrays with an emphasis on performance, memory management, and ease of use. The class supports common operations such as insertion, deletion, resizing, and element access while handling memory allocation and deallocation internally.
 
 # Abstract Class "Zmogus"
 
