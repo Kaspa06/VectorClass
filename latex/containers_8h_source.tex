@@ -1,0 +1,19 @@
+\doxysection{containers.\+h}
+\hypertarget{containers_8h_source}{}\label{containers_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CONTAINERS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CONTAINERS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}vector.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{enum\ class}\ ContainerType\ \{\ None,\ Vector\};}
+\DoxyCodeLine{00007\ \textcolor{keyword}{enum\ class}\ Action\ \{\ None,\ Generate,\ Sort\ \};}
+\DoxyCodeLine{00008\ ContainerType\ getContainerChoice();}
+\DoxyCodeLine{00009\ Action\ getActionChoice();}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keywordtype}{void}\ performAction(ContainerType\ containerChoice,\ Action\ actionChoice,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classvector}{vector<int>}}\&\ sizes);}
+\DoxyCodeLine{00012\ \textcolor{keywordtype}{void}\ runApp();}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

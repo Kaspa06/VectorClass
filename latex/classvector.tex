@@ -1,0 +1,172 @@
+\doxysection{vector\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classvector}{}\label{classvector}\index{vector$<$ T $>$@{vector$<$ T $>$}}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvector_a4418c8bfd3630abb13bc12a67aa55ef6}\label{classvector_a4418c8bfd3630abb13bc12a67aa55ef6} 
+typedef size\+\_\+t {\bfseries size\+\_\+type}
+\item 
+\Hypertarget{classvector_a4bd5e2af88d5b9eea4fc9c15908dce4e}\label{classvector_a4bd5e2af88d5b9eea4fc9c15908dce4e} 
+typedef T {\bfseries value\+\_\+type}
+\item 
+\Hypertarget{classvector_a5611f6d1d902a469cc48de23bd359987}\label{classvector_a5611f6d1d902a469cc48de23bd359987} 
+typedef T \& {\bfseries reference}
+\item 
+\Hypertarget{classvector_a0aecfe435679f870fabbdfb93ebc58ba}\label{classvector_a0aecfe435679f870fabbdfb93ebc58ba} 
+typedef const T \& {\bfseries const\+\_\+reference}
+\item 
+\Hypertarget{classvector_acca0fb7cb134e254d33a83c4469faf62}\label{classvector_acca0fb7cb134e254d33a83c4469faf62} 
+typedef T \texorpdfstring{$\ast$}{*} {\bfseries iterator}
+\item 
+\Hypertarget{classvector_a59ea8b81dadaa7ee32f91d51435f67c0}\label{classvector_a59ea8b81dadaa7ee32f91d51435f67c0} 
+typedef const T \texorpdfstring{$\ast$}{*} {\bfseries const\+\_\+iterator}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classvector_a266ca27ab83adb5b3a9e0349202d8879}\label{classvector_a266ca27ab83adb5b3a9e0349202d8879} 
+{\bfseries vector} (size\+\_\+type n, const T \&t=T\{\})
+\item 
+\Hypertarget{classvector_ac636edc485bffa973b50b8bdfb1cc9cb}\label{classvector_ac636edc485bffa973b50b8bdfb1cc9cb} 
+{\bfseries vector} (const \mbox{\hyperlink{classvector}{vector}} \&v)
+\item 
+\Hypertarget{classvector_abc0990ba7891adf2bd297ec59b46d875}\label{classvector_abc0990ba7891adf2bd297ec59b46d875} 
+{\footnotesize template$<$class Input\+Iterator $>$ }\\{\bfseries vector} (Input\+Iterator first, Input\+Iterator last)
+\item 
+\Hypertarget{classvector_a8c25e7fe5becc598b988039a726fb5f7}\label{classvector_a8c25e7fe5becc598b988039a726fb5f7} 
+{\bfseries vector} (\mbox{\hyperlink{classvector}{vector}} \&\&v)
+\item 
+\Hypertarget{classvector_a21c68c913d528c312c633f061c8c34c6}\label{classvector_a21c68c913d528c312c633f061c8c34c6} 
+{\bfseries vector} (const std\+::initializer\+\_\+list$<$ T $>$ il)
+\item 
+\Hypertarget{classvector_a6c48007bf35df61693ab7701ab87e1f0}\label{classvector_a6c48007bf35df61693ab7701ab87e1f0} 
+\mbox{\hyperlink{classvector}{vector}} \& {\bfseries operator=} (const \mbox{\hyperlink{classvector}{vector}} \&other)
+\item 
+\Hypertarget{classvector_a18347816f07359e61ced3049d7df71eb}\label{classvector_a18347816f07359e61ced3049d7df71eb} 
+\mbox{\hyperlink{classvector}{vector}} \& {\bfseries operator=} (\mbox{\hyperlink{classvector}{vector}} \&\&other) noexcept
+\item 
+\Hypertarget{classvector_a7aecb965ffda6737cc461c9316d878f2}\label{classvector_a7aecb965ffda6737cc461c9316d878f2} 
+iterator {\bfseries begin} ()
+\item 
+\Hypertarget{classvector_a08a0cf03d12c736d7a5d38417a0828f3}\label{classvector_a08a0cf03d12c736d7a5d38417a0828f3} 
+const\+\_\+iterator {\bfseries begin} () const
+\item 
+\Hypertarget{classvector_ad18d9638b1d68f0398794ba0da4504a9}\label{classvector_ad18d9638b1d68f0398794ba0da4504a9} 
+iterator {\bfseries end} ()
+\item 
+\Hypertarget{classvector_a2afa1e4a11073b98c2d13157d84cf029}\label{classvector_a2afa1e4a11073b98c2d13157d84cf029} 
+const\+\_\+iterator {\bfseries end} () const
+\item 
+\Hypertarget{classvector_af7961c7a6accd1fd521956a6b35cb2d2}\label{classvector_af7961c7a6accd1fd521956a6b35cb2d2} 
+size\+\_\+type {\bfseries size} () const
+\item 
+\Hypertarget{classvector_ab9932eba6cfe341e94e22460b788f1e1}\label{classvector_ab9932eba6cfe341e94e22460b788f1e1} 
+size\+\_\+type {\bfseries max\+\_\+size} () const
+\item 
+\Hypertarget{classvector_aa553411bb77637098901bb2efb74495e}\label{classvector_aa553411bb77637098901bb2efb74495e} 
+void {\bfseries resize} (size\+\_\+type sz)
+\item 
+\Hypertarget{classvector_a73adfb2ecf71e278e4ed622aa47acbf9}\label{classvector_a73adfb2ecf71e278e4ed622aa47acbf9} 
+void {\bfseries resize} (size\+\_\+type sz, const value\+\_\+type \&value)
+\item 
+\Hypertarget{classvector_a893da0a956044cbfc2d4ebd4edb097cb}\label{classvector_a893da0a956044cbfc2d4ebd4edb097cb} 
+size\+\_\+type {\bfseries capacity} () const
+\item 
+\Hypertarget{classvector_a98f6ba1ed5027bc316739efa0370dc9f}\label{classvector_a98f6ba1ed5027bc316739efa0370dc9f} 
+bool {\bfseries empty} () const noexcept
+\item 
+\Hypertarget{classvector_aa2e30f799d6ff3ccc03411bac5b3a4c6}\label{classvector_aa2e30f799d6ff3ccc03411bac5b3a4c6} 
+void {\bfseries reserve} (size\+\_\+type n)
+\item 
+\Hypertarget{classvector_ac021d1a35685a22b0f980693f227b715}\label{classvector_ac021d1a35685a22b0f980693f227b715} 
+void {\bfseries shrink\+\_\+to\+\_\+fit} ()
+\item 
+\Hypertarget{classvector_ad650022b889c6e1e307b80e41315605f}\label{classvector_ad650022b889c6e1e307b80e41315605f} 
+T \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (size\+\_\+type n)
+\item 
+\Hypertarget{classvector_a4e0b9e74c6c586d4525f7fbc018bfa0d}\label{classvector_a4e0b9e74c6c586d4525f7fbc018bfa0d} 
+const T \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (size\+\_\+type n) const
+\item 
+\Hypertarget{classvector_ad72a222490a6dcb55d0d22287b8f6f51}\label{classvector_ad72a222490a6dcb55d0d22287b8f6f51} 
+reference {\bfseries at} (size\+\_\+type n)
+\item 
+\Hypertarget{classvector_a447aea9f88801ad5005b9fbd4c0aaf71}\label{classvector_a447aea9f88801ad5005b9fbd4c0aaf71} 
+const\+\_\+reference {\bfseries at} (size\+\_\+type n) const
+\item 
+\Hypertarget{classvector_aa1b981759032ab76b6f35db8bfb5fe5c}\label{classvector_aa1b981759032ab76b6f35db8bfb5fe5c} 
+reference {\bfseries front} ()
+\item 
+\Hypertarget{classvector_a26bf3e51ca3c8b171f285f1c6720c0f1}\label{classvector_a26bf3e51ca3c8b171f285f1c6720c0f1} 
+const\+\_\+reference {\bfseries front} () const
+\item 
+\Hypertarget{classvector_af4a24e5448704ca201d1513d743710c8}\label{classvector_af4a24e5448704ca201d1513d743710c8} 
+reference {\bfseries back} ()
+\item 
+\Hypertarget{classvector_ad7f7ad663611b0a891fdfe4ee6d0afcd}\label{classvector_ad7f7ad663611b0a891fdfe4ee6d0afcd} 
+const\+\_\+reference {\bfseries back} () const
+\item 
+\Hypertarget{classvector_a762c9db03eb0714c04fa1597299081a8}\label{classvector_a762c9db03eb0714c04fa1597299081a8} 
+value\+\_\+type \texorpdfstring{$\ast$}{*} {\bfseries data} () noexcept
+\item 
+\Hypertarget{classvector_ae782d6addb8785a003cdb0e0350abb5c}\label{classvector_ae782d6addb8785a003cdb0e0350abb5c} 
+const value\+\_\+type \texorpdfstring{$\ast$}{*} {\bfseries data} () const noexcept
+\item 
+\Hypertarget{classvector_a3fadd1e30c4f5d4271989437bb8d4bb4}\label{classvector_a3fadd1e30c4f5d4271989437bb8d4bb4} 
+{\footnotesize template$<$class Input\+Iterator $>$ }\\void {\bfseries assign} (Input\+Iterator first, Input\+Iterator last)
+\item 
+\Hypertarget{classvector_a8fdeb2f085b197d7a176d15458672280}\label{classvector_a8fdeb2f085b197d7a176d15458672280} 
+void {\bfseries assign} (size\+\_\+type n, const value\+\_\+type \&val)
+\item 
+\Hypertarget{classvector_ae289dabc9ebf098e13bcabed9e502316}\label{classvector_ae289dabc9ebf098e13bcabed9e502316} 
+void {\bfseries assign} (std\+::initializer\+\_\+list$<$ value\+\_\+type $>$ il)
+\item 
+\Hypertarget{classvector_a3dad412c2b85f46e7f3834d453d9524f}\label{classvector_a3dad412c2b85f46e7f3834d453d9524f} 
+void {\bfseries push\+\_\+back} (const value\+\_\+type \&t)
+\item 
+\Hypertarget{classvector_a151a4be9c10a60f1741da2070e6b62a4}\label{classvector_a151a4be9c10a60f1741da2070e6b62a4} 
+void {\bfseries push\+\_\+back} (value\+\_\+type \&\&val)
+\item 
+\Hypertarget{classvector_aeec9e5d602d555d466a936310aa47866}\label{classvector_aeec9e5d602d555d466a936310aa47866} 
+void {\bfseries pop\+\_\+back} ()
+\item 
+\Hypertarget{classvector_a875bdb5fec654e9d5d8ff6eeb0f2969c}\label{classvector_a875bdb5fec654e9d5d8ff6eeb0f2969c} 
+iterator {\bfseries insert} (iterator pos, const T \&value)
+\item 
+\Hypertarget{classvector_ab48e714869517f3dd2e88ab97175c17e}\label{classvector_ab48e714869517f3dd2e88ab97175c17e} 
+iterator {\bfseries erase} (iterator position)
+\item 
+\Hypertarget{classvector_a3b4d4edd1035beefac53304687cebecf}\label{classvector_a3b4d4edd1035beefac53304687cebecf} 
+iterator {\bfseries erase} (iterator first, iterator last)
+\item 
+\Hypertarget{classvector_a776cffd83b03c217df6cd4417e3ae747}\label{classvector_a776cffd83b03c217df6cd4417e3ae747} 
+void {\bfseries swap} (\mbox{\hyperlink{classvector}{vector}} \&x)
+\item 
+\Hypertarget{classvector_a1820916bac7b7069404eccb87a4a216a}\label{classvector_a1820916bac7b7069404eccb87a4a216a} 
+void {\bfseries clear} () noexcept
+\item 
+\Hypertarget{classvector_a26faefab2fb6cbeac3f8c4f210c5d6cc}\label{classvector_a26faefab2fb6cbeac3f8c4f210c5d6cc} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{classvector}{vector}}$<$ T $>$ \&other) const
+\item 
+\Hypertarget{classvector_a6a195924dc859d9bcfd353a060ec6c8e}\label{classvector_a6a195924dc859d9bcfd353a060ec6c8e} 
+bool {\bfseries operator!=} (const \mbox{\hyperlink{classvector}{vector}}$<$ T $>$ \&other) const
+\item 
+\Hypertarget{classvector_a25cb62ef759587ba969e65c29887fad6}\label{classvector_a25cb62ef759587ba969e65c29887fad6} 
+bool {\bfseries operator$<$} (const \mbox{\hyperlink{classvector}{vector}}$<$ T $>$ \&other) const
+\item 
+\Hypertarget{classvector_ab1646e0063c3cbb4ba3d27b4e2c2bdce}\label{classvector_ab1646e0063c3cbb4ba3d27b4e2c2bdce} 
+bool {\bfseries operator$<$=} (const \mbox{\hyperlink{classvector}{vector}}$<$ T $>$ \&other) const
+\item 
+\Hypertarget{classvector_af451e6a94d11102814ad2dd7a3e94b74}\label{classvector_af451e6a94d11102814ad2dd7a3e94b74} 
+bool {\bfseries operator$>$} (const \mbox{\hyperlink{classvector}{vector}}$<$ T $>$ \&other) const
+\item 
+\Hypertarget{classvector_a7563515b8c6e0e32150a1f91881d72c6}\label{classvector_a7563515b8c6e0e32150a1f91881d72c6} 
+bool {\bfseries operator$>$=} (const \mbox{\hyperlink{classvector}{vector}}$<$ T $>$ \&other) const
+\item 
+\Hypertarget{classvector_ade31517dec8e5a0dc0f41105eaa17ebf}\label{classvector_ade31517dec8e5a0dc0f41105eaa17ebf} 
+void {\bfseries swap} (\mbox{\hyperlink{classvector}{vector}}$<$ T $>$ \&x, \mbox{\hyperlink{classvector}{vector}}$<$ T $>$ \&y)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+vector.\+h\end{DoxyCompactItemize}

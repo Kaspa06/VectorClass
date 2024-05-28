@@ -1,0 +1,386 @@
+\chapter{Specs}
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{Specs@{Specs}}
+\label{md__r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md0}%
+\begin{DoxyVerb}CPU: AMD Ryzen 5 5600U with Radeon Graphics 2.30 GHz
+RAM: 16.0 GB (15.3 GB usable)
+SSD: WDC PC SN530 512Gb
+GPU: Integrated with CPU
+OS: Windows 10 Pro 64-bit
+\end{DoxyVerb}
+ \hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{\texorpdfstring{Introduction}{Introduction}}\label{md__r_e_a_d_m_e_autotoc_md1}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxyparagraph{\texorpdfstring{This project provides an implementation of a dynamic array container in C++ named {\ttfamily vector}, similar to {\ttfamily std\+::vector} from the C++ Standard Library. This custom {\ttfamily vector} class template provides various functionalities to handle dynamic arrays with an emphasis on performance, memory management, and ease of use. The class supports common operations such as insertion, deletion, resizing, and element access while handling memory allocation and deallocation internally.}{This project provides an implementation of a dynamic array container in C++ named {\ttfamily vector}, similar to {\ttfamily std\+::vector} from the C++ Standard Library. This custom {\ttfamily vector} class template provides various functionalities to handle dynamic arrays with an emphasis on performance, memory management, and ease of use. The class supports common operations such as insertion, deletion, resizing, and element access while handling memory allocation and deallocation internally.}}\label{md__r_e_a_d_m_e_autotoc_md2}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysubsection{\texorpdfstring{Features}{Features}}\label{md__r_e_a_d_m_e_autotoc_md3}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysubsubsection{\texorpdfstring{Constructors}{Constructors}}\label{md__r_e_a_d_m_e_autotoc_md4}
+
+\begin{DoxyEnumerate}
+\item Default Constructor
+
+{\ttfamily \doxylink{classvector}{vector()}\+:} Initializes an empty vector.
+\item Fill Constructor
+\end{DoxyEnumerate}
+
+{\ttfamily explicit vector(size\+\_\+type n, const T\& t = T\{\})\+:} Initializes a vector with n elements, each initialized to t.
+
+
+\begin{DoxyEnumerate}
+\item Copy Constructor
+\end{DoxyEnumerate}
+
+{\ttfamily vector(const vector\& v)\+:} Initializes a vector as a copy of another vector v.
+
+
+\begin{DoxyEnumerate}
+\item Range Constructor
+\end{DoxyEnumerate}
+
+{\ttfamily template \texorpdfstring{$<$}{<}class Input\+Iterator\texorpdfstring{$>$}{>} \doxylink{classvector}{vector(\+Input\+Iterator first, Input\+Iterator last)}\+:} Initializes a vector with elements from the range {\ttfamily \mbox{[}first, last)}.
+
+
+\begin{DoxyEnumerate}
+\item Move Constructor
+\end{DoxyEnumerate}
+
+{\ttfamily vector(vector\&\& v)\+:} Initializes a vector by moving resources from another vector {\ttfamily v}.
+
+
+\begin{DoxyEnumerate}
+\item Initializer List Constructor
+\end{DoxyEnumerate}
+
+{\ttfamily vector(const std\+::initializer\+\_\+list\texorpdfstring{$<$}{<}T\texorpdfstring{$>$}{>} il)\+:} Initializes a vector with elements from an initializer list il.\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysubsubsection{\texorpdfstring{Destructor}{Destructor}}\label{md__r_e_a_d_m_e_autotoc_md5}
+{\ttfamily \texorpdfstring{$\sim$}{\string~}vector()\+:} Destroys the vector and deallocates its memory.\hypertarget{md__r_e_a_d_m_e_autotoc_md6}{}\doxysubsubsection{\texorpdfstring{Assignment Operators}{Assignment Operators}}\label{md__r_e_a_d_m_e_autotoc_md6}
+
+\begin{DoxyEnumerate}
+\item Copy Assignment
+\end{DoxyEnumerate}
+
+{\ttfamily vector\& operator=(const vector\& other)\+:} Assigns the contents of {\ttfamily other} to the vector.
+
+
+\begin{DoxyEnumerate}
+\item Move Assignment
+\end{DoxyEnumerate}
+
+{\ttfamily vector\& operator=(vector\&\& other) noexcept\+:} Moves the contents of other to the vector.\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysubsubsection{\texorpdfstring{Iterators}{Iterators}}\label{md__r_e_a_d_m_e_autotoc_md7}
+
+\begin{DoxyEnumerate}
+\item {\ttfamily iterator begin()}
+\item {\ttfamily const\+\_\+iterator begin() const}
+\item {\ttfamily iterator end()}
+\item {\ttfamily const\+\_\+iterator end() const}
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md8}{}\doxysubsubsection{\texorpdfstring{Capacity}{Capacity}}\label{md__r_e_a_d_m_e_autotoc_md8}
+
+\begin{DoxyEnumerate}
+\item {\ttfamily size\+\_\+type size() const\+:} Returns the number of elements in the vector.
+\item {\ttfamily size\+\_\+type max\+\_\+size() const\+:} Returns the maximum possible number of elements.
+\item {\ttfamily void resize(size\+\_\+type sz)\+:} Resizes the vector to contain sz elements.
+\end{DoxyEnumerate}
+
+4.{\ttfamily void resize(size\+\_\+type sz, const value\+\_\+type\& value)\+:} Resizes the vector to contain {\ttfamily sz} elements, each initialized to value.
+
+
+\begin{DoxyEnumerate}
+\item {\ttfamily size\+\_\+type capacity() const\+:} Returns the number of elements that can be held in currently allocated storage.
+\item {\ttfamily bool empty() const noexcept\+:} Checks if the vector is empty.
+\item {\ttfamily void reserve(size\+\_\+type n)\+:} Reserves storage for at least {\ttfamily n} elements.
+\item {\ttfamily void shrink\+\_\+to\+\_\+fit()\+:} Reduces capacity to fit the size.
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysubsubsection{\texorpdfstring{Element Access}{Element Access}}\label{md__r_e_a_d_m_e_autotoc_md9}
+
+\begin{DoxyItemize}
+\item {\ttfamily T\& operator\mbox{[}$\,$\mbox{]}(size\+\_\+type n)\+:} Accesses the element at position n.
+\item {\ttfamily const T\& operator\mbox{[}$\,$\mbox{]}(size\+\_\+type n) const}
+\item {\ttfamily reference at(size\+\_\+type n)\+:} Accesses the element at position n with bounds checking.
+\item {\ttfamily const\+\_\+reference at(size\+\_\+type n) const}
+\item {\ttfamily reference front()\+:} Accesses the first element.
+\item {\ttfamily const\+\_\+reference front() const}
+\item {\ttfamily reference back()\+:} Accesses the last element.
+\item {\ttfamily const\+\_\+reference back() const}
+\item {\ttfamily value\+\_\+type\texorpdfstring{$\ast$}{*} data() noexcept\+:} Returns a pointer to the underlying array.
+\item {\ttfamily const value\+\_\+type\texorpdfstring{$\ast$}{*} data() const noexcept}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md10}{}\doxysubsubsection{\texorpdfstring{Modifiers}{Modifiers}}\label{md__r_e_a_d_m_e_autotoc_md10}
+
+\begin{DoxyItemize}
+\item {\ttfamily template \texorpdfstring{$<$}{<}class Input\+Iterator\texorpdfstring{$>$}{>} void assign(\+Input\+Iterator first, Input\+Iterator last)\+:} Assigns values from the range \mbox{[}first, last).
+\item {\ttfamily void assign(size\+\_\+type n, const value\+\_\+type\& val)\+:} Assigns n copies of val to the vector.
+\item {\ttfamily void assign(std\+::initializer\+\_\+list\texorpdfstring{$<$}{<}value\+\_\+type\texorpdfstring{$>$}{>} il)\+:} Assigns values from the initializer list il.
+\item {\ttfamily void push\+\_\+back(const value\+\_\+type\& t)\+:} Adds an element to the end.
+\item {\ttfamily void push\+\_\+back(value\+\_\+type\&\& val)\+:} Adds an element to the end (move).
+\item {\ttfamily void pop\+\_\+back()\+:} Removes the last element.
+\item {\ttfamily iterator insert(iterator pos, const T\& value)\+:} Inserts an element at the specified position.
+\item {\ttfamily iterator erase(iterator position)\+:} Erases the element at the specified position.
+\item {\ttfamily iterator erase(iterator first, iterator last)\+:} Erases elements in the range \mbox{[}first, last).
+\item {\ttfamily void swap(vector\& x)\+:} Swaps the contents of this vector with x.
+\item {\ttfamily void clear() noexcept\+:} Clears the contents of the vector.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md11}{}\doxysubsubsection{\texorpdfstring{Relational Operators}{Relational Operators}}\label{md__r_e_a_d_m_e_autotoc_md11}
+
+\begin{DoxyItemize}
+\item {\ttfamily bool operator==(const vector\texorpdfstring{$<$}{<}T\texorpdfstring{$>$}{>}\& other) const\+:} Checks if two vectors are equal.
+\item {\ttfamily bool operator!=(const vector\texorpdfstring{$<$}{<}T\texorpdfstring{$>$}{>}\& other) const}
+\item {\ttfamily bool operator\texorpdfstring{$<$}{<}(const vector\texorpdfstring{$<$}{<}T\texorpdfstring{$>$}{>}\& other) const}
+\item {\ttfamily bool operator\texorpdfstring{$<$}{<}=(const vector\texorpdfstring{$<$}{<}T\texorpdfstring{$>$}{>}\& other) const}
+\item {\ttfamily bool operator\texorpdfstring{$>$}{>}(const vector\texorpdfstring{$<$}{<}T\texorpdfstring{$>$}{>}\& other) const}
+\item {\ttfamily bool operator\texorpdfstring{$>$}{>}=(const vector\texorpdfstring{$<$}{<}T\texorpdfstring{$>$}{>}\& other) const}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md12}{}\doxysubsubsection{\texorpdfstring{Private Member Functions}{Private Member Functions}}\label{md__r_e_a_d_m_e_autotoc_md12}
+
+\begin{DoxyItemize}
+\item {\ttfamily void create()\+:} Initializes an empty vector.
+\item {\ttfamily void create(size\+\_\+type n, const T\& val)\+:} Allocates and initializes storage for n elements.
+\item {\ttfamily void create(const\+\_\+iterator i, const\+\_\+iterator j)\+:} Allocates and initializes storage from the range \mbox{[}i, j).
+\item {\ttfamily void uncreate()\+:} Destroys elements and deallocates storage.
+\item {\ttfamily void grow(size\+\_\+type new\+\_\+capacity = 1)\+:} Grows the vector to accommodate more elements.
+\item {\ttfamily void unchecked\+\_\+append(const T\& val)\+:} Appends an element without checking capacity.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md13}{}\doxysubsubsection{\texorpdfstring{Testing {\ttfamily std\+::vector} and {\ttfamily vector} speed and reallocations}{Testing {\ttfamily std\+::vector} and {\ttfamily vector} speed and reallocations}}\label{md__r_e_a_d_m_e_autotoc_md13}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Size   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::vector Time   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Custom vector Time   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::vector Reallocations   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ vector Reallocations    }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Size   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::vector Time   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Custom vector Time   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::vector Reallocations   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ vector Reallocations    }\\\cline{1-5}
+\endhead
+10000   &0 s   &0 s   &14   &14    \\\cline{1-5}
+100000   &0.\+001994 s   &0.\+001995 s   &17   &17    \\\cline{1-5}
+1000000   &0.\+020944 s   &0.\+016955 s   &20   &20    \\\cline{1-5}
+10000000   &0.\+206448 s   &0.\+183509 s   &24   &24    \\\cline{1-5}
+10000000   &2.\+0415s   &1.\+77326s   &27   &27   \\\cline{1-5}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md14}{}\doxysubsubsection{\texorpdfstring{Testing {\ttfamily std\+::vector} and {\ttfamily vector} file generating}{Testing {\ttfamily std\+::vector} and {\ttfamily vector} file generating}}\label{md__r_e_a_d_m_e_autotoc_md14}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Size   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::vector Time   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Custom vector Time    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Size   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ std\+::vector Time   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Custom vector Time    }\\\cline{1-3}
+\endhead
+1000   &0.\+013903s   &0.\+010972s    \\\cline{1-3}
+10000   &0.\+100278s   &0.\+105718s    \\\cline{1-3}
+100000   &0.\+964256s   &1.\+06715s    \\\cline{1-3}
+1000000   &9.\+63277s   &10.\+2358s    \\\cline{1-3}
+1000000   &117.\+533s   &106.\+347s   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md15}{}\doxysubsubsection{\texorpdfstring{Testing {\ttfamily std\+::vector} and {\ttfamily vector} file read/sort/divide time}{Testing {\ttfamily std\+::vector} and {\ttfamily vector} file read/sort/divide time}}\label{md__r_e_a_d_m_e_autotoc_md15}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily std\+::vector}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000 students   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000 students   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100000 students   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000 students   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000000 students    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily std\+::vector}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000 students   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000 students   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100000 students   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000 students   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000000 students    }\\\cline{1-6}
+\endhead
+Skaitymas uztruko\+:   &0.\+015444s   &0.\+166344s   &1.\+59188s   &15.\+4619s   &165.\+159s    \\\cline{1-6}
+Rusiavimas uztruko\+:   &0.\+006081s   &0.\+0552494s   &0.\+538313s   &6.\+18915s   &60.\+0473s    \\\cline{1-6}
+Studentu skirstymas uztruko\+:   &0.\+002001s   &0.\+00835907s   &0.\+0876151s   &1.\+10855s   &11.\+3426s   \\\cline{1-6}
+\end{longtabu}
+
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ vector   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000 students   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000 students   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100000 students   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000 students   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000000 students    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ vector   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000 students   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000 students   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100000 students   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000 students   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000000 students    }\\\cline{1-6}
+\endhead
+Skaitymas uztruko\+:   &0.\+008976000s   &0.\+085770000s   &0.\+831775000s   &8.\+325740000s   &84.\+65230s    \\\cline{1-6}
+Rusiavimas uztruko\+:   &0.\+003989000s   &0.\+092781000s   &0.\+4375302s   &5.\+6458932s   &58.\+65063s    \\\cline{1-6}
+Studentu skirstymas uztruko\+:   &0.\+000998000s   &0.\+010970000s   &0.\+099732000s   &1.\+096098000s   &11.\+39806s   \\\cline{1-6}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md16}{}\doxysubsubsection{\texorpdfstring{Installing Inno Setup Compiler}{Installing Inno Setup Compiler}}\label{md__r_e_a_d_m_e_autotoc_md16}
+
+\begin{DoxyEnumerate}
+\item Open your web browser and go to the official Inno Setup website\+: Inno Setup.
+\item Locate the downloaded setup file (e.\+g., {\ttfamily is-\/\+X.\+X.\+X.\+exe}).
+\item Double-\/click the setup file to start the installation process.
+\item Follow the on-\/screen instructions to complete the installation. You can use the default settings.
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md17}{}\doxysubsubsection{\texorpdfstring{Creating a Simple Installer Script}{Creating a Simple Installer Script}}\label{md__r_e_a_d_m_e_autotoc_md17}
+
+\begin{DoxyEnumerate}
+\item Open the Inno Setup Compiler from the Start Menu or desktop shortcut.
+\item Click on "{}\+File"{} and then "{}\+New"{} to create a new script. The "{}\+New Script Wizard"{} will open.
+\item Follow the steps in the wizard\+:
+\end{DoxyEnumerate}
+\begin{DoxyItemize}
+\item Application Information\+: Enter your application\textquotesingle{}s name, version, and publisher information.
+\item Application Folder\+: Specify the default installation folder (e.\+g., \{pf\}\textbackslash{}\+My\+App for Program Files).
+\item Application Files\+: Add the files you want to include in your installer (e.\+g., executable files, DLLs, etc.).
+\item Application Icons\+: Specify any shortcuts to create (e.\+g., desktop or Start Menu shortcuts).
+\item Setup Languages\+: Select the languages you want to support in your installer.
+\end{DoxyItemize}
+\begin{DoxyEnumerate}
+\item Review your settings and click "{}\+Finish."{} The wizard will generate a basic script.
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md18}{}\doxysubsubsection{\texorpdfstring{Compiling and Running the Script}{Compiling and Running the Script}}\label{md__r_e_a_d_m_e_autotoc_md18}
+
+\begin{DoxyEnumerate}
+\item After the script is generated, review it in the Inno Setup Compiler. Make any necessary changes or customizations.
+\item Save your script by clicking "{}\+File"{} and then "{}\+Save As."{} Give it a meaningful name (e.\+g., setup.\+iss).
+\item To compile the script, click "{}\+Build"{} and then "{}\+Compile"{} (or press F9). The compiler will create an installer executable based on your script.
+\item Once the compilation is complete, you will see a message indicating that the setup has been compiled successfully.
+\item Locate the compiled installer executable (e.\+g., setup.\+exe) in the output directory specified in your script.
+\item Run the installer to test it and ensure everything works as expected.
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md19}{}\doxysection{\texorpdfstring{Abstract Class "{}\+Zmogus"{}}{Abstract Class "{}\+Zmogus"{}}}\label{md__r_e_a_d_m_e_autotoc_md19}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md20}{}\doxyparagraph{\texorpdfstring{An abstract class in C++ is a class that contains at least one pure virtual function. A pure virtual function is a virtual function for which we provide only the declaration in the base class, without providing any implementation. Abstract classes are designed to be used as base classes, and they cannot be instantiated directly. Instead, they are intended to serve as interfaces that define a common set of methods that derived classes must implement.}{An abstract class in C++ is a class that contains at least one pure virtual function. A pure virtual function is a virtual function for which we provide only the declaration in the base class, without providing any implementation. Abstract classes are designed to be used as base classes, and they cannot be instantiated directly. Instead, they are intended to serve as interfaces that define a common set of methods that derived classes must implement.}}\label{md__r_e_a_d_m_e_autotoc_md20}
+\begin{DoxyVerb}class Zmogus {
+public:
+    virtual void setVardas(std::string vardas) = 0;
+    virtual std::string getVardas() const = 0;
+    virtual void setPavarde(std::string pavarde) = 0;
+    virtual std::string getPavarde() const = 0;
+    virtual ~Zmogus() = default;
+
+};
+\end{DoxyVerb}
+ \hypertarget{md__r_e_a_d_m_e_autotoc_md21}{}\doxysubsubsection{\texorpdfstring{The key characteristics of an abstract class are\+:}{The key characteristics of an abstract class are\+:}}\label{md__r_e_a_d_m_e_autotoc_md21}
+
+\begin{DoxyItemize}
+\item Contains Pure Virtual Functions\+: An abstract class contains at least one pure virtual function, which is declared with the virtual keyword and assigned the value 0 as its implementation.
+\item Cannot be Instantiated\+: Since abstract classes have at least one pure virtual function without an implementation, objects of abstract classes cannot be created directly. Attempting to create an instance of an abstract class will result in a compilation error.
+\item Used as Base Classes\+: Abstract classes are meant to be used as base classes. Derived classes inherit from abstract classes and provide concrete implementations for all the pure virtual functions defined in the abstract base class.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md22}{}\doxysection{\texorpdfstring{Rule of Five and Overloaded Methods}{Rule of Five and Overloaded Methods}}\label{md__r_e_a_d_m_e_autotoc_md22}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md23}{}\doxysubsection{\texorpdfstring{Rule of Five}{Rule of Five}}\label{md__r_e_a_d_m_e_autotoc_md23}
+In C++, the Rule of Five refers to a set of guidelines concerning resource management for classes that manage dynamic memory allocation or external resources. The Rule of Five consists of five special member functions that need to be defined or explicitly disabled if one of them is used\+:\hypertarget{md__r_e_a_d_m_e_autotoc_md24}{}\doxysubsubsection{\texorpdfstring{Destructor}{Destructor}}\label{md__r_e_a_d_m_e_autotoc_md24}
+\label{md__r_e_a_d_m_e_autotoc_md25}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md25}%
+ \doxysubparagraph*{Responsible for releasing resources acquired by the object.}
+
+\begin{DoxyVerb}Studentas::~Studentas() {
+nd_rezultatai.clear();
+vardas.clear();
+pavarde.clear();
+egzaminas = 0;
+\end{DoxyVerb}
+ \}\hypertarget{md__r_e_a_d_m_e_autotoc_md26}{}\doxysubsubsection{\texorpdfstring{Copy Constructor}{Copy Constructor}}\label{md__r_e_a_d_m_e_autotoc_md26}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md27}{}\doxyparagraph{\texorpdfstring{Creates a new object as a copy of an existing object.}{Creates a new object as a copy of an existing object.}}\label{md__r_e_a_d_m_e_autotoc_md27}
+\begin{DoxyVerb}Studentas::Studentas(const Studentas &copy)
+: vardas(copy.vardas), pavarde(copy.pavarde), nd_rezultatai(copy.nd_rezultatai),egzaminas(copy.egzaminas) {}
+\end{DoxyVerb}
+ \hypertarget{md__r_e_a_d_m_e_autotoc_md28}{}\doxysubsubsection{\texorpdfstring{Copy Assignment Operator}{Copy Assignment Operator}}\label{md__r_e_a_d_m_e_autotoc_md28}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md29}{}\doxyparagraph{\texorpdfstring{Assigns the state of one object to another existing object.}{Assigns the state of one object to another existing object.}}\label{md__r_e_a_d_m_e_autotoc_md29}
+\begin{DoxyVerb}Studentas& Studentas::operator=(const Studentas& copy)
+{
+    if(this !=&copy)
+    {
+        vardas = copy.vardas;
+        pavarde = copy.pavarde;
+        nd_rezultatai = copy.nd_rezultatai;
+        egzaminas = copy.egzaminas;
+    }
+    return *this;
+}
+\end{DoxyVerb}
+ \hypertarget{md__r_e_a_d_m_e_autotoc_md30}{}\doxysubsubsection{\texorpdfstring{Move Constructor}{Move Constructor}}\label{md__r_e_a_d_m_e_autotoc_md30}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md31}{}\doxyparagraph{\texorpdfstring{Transfers resources from a temporary object to a new object.}{Transfers resources from a temporary object to a new object.}}\label{md__r_e_a_d_m_e_autotoc_md31}
+\begin{DoxyVerb}    Studentas& Studentas::operator=(Studentas&& copy) noexcept {
+        if (this!= &copy) {
+            // Swap the members of the current object with the members of the other object
+            std::swap(vardas, copy.vardas);
+            std::swap(pavarde, copy.pavarde);
+            std::swap(nd_rezultatai, copy.nd_rezultatai);
+            std::swap(egzaminas, copy.egzaminas);
+        }
+        return *this;
+    }
+\end{DoxyVerb}
+ \hypertarget{md__r_e_a_d_m_e_autotoc_md32}{}\doxysubsubsection{\texorpdfstring{Move Assignment Operator}{Move Assignment Operator}}\label{md__r_e_a_d_m_e_autotoc_md32}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md33}{}\doxyparagraph{\texorpdfstring{Transfers resources from one object to another existing object.}{Transfers resources from one object to another existing object.}}\label{md__r_e_a_d_m_e_autotoc_md33}
+\begin{DoxyVerb}    Studentas& Studentas::operator=(Studentas&& copy) noexcept {
+        if (this!= &copy) {
+            // Swap the members of the current object with the members of the other object
+            std::swap(vardas, copy.vardas);
+            std::swap(pavarde, copy.pavarde);
+            std::swap(nd_rezultatai, copy.nd_rezultatai);
+            std::swap(egzaminas, copy.egzaminas);
+        }
+        return *this;
+    }
+\end{DoxyVerb}
+ \hypertarget{md__r_e_a_d_m_e_autotoc_md34}{}\doxysubsection{\texorpdfstring{Overloaded Methods}{Overloaded Methods}}\label{md__r_e_a_d_m_e_autotoc_md34}
+The {\ttfamily \doxylink{class_studentas}{Studentas}} class overloads the input and output operators ({\ttfamily operator\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}} and {\ttfamily operator\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}}) to provide serialization and deserialization capabilities. These overloaded methods allow objects of the {\ttfamily \doxylink{class_studentas}{Studentas}} class to be written to an output stream (e.\+g., {\ttfamily std\+::cout} or a file) and read from an input stream (e.\+g., {\ttfamily std\+::cin} or a file).\hypertarget{md__r_e_a_d_m_e_autotoc_md35}{}\doxysubsubsection{\texorpdfstring{Output Operator ({\ttfamily operator\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}})}{Output Operator ({\ttfamily operator\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}})}}\label{md__r_e_a_d_m_e_autotoc_md35}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md36}{}\doxyparagraph{\texorpdfstring{The output operator {\ttfamily operator\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}} is overloaded to serialize a {\ttfamily Studentas} object to an output stream. It prints the {\ttfamily vardas}, {\ttfamily pavarde}, {\ttfamily egzaminas}, and {\ttfamily nd\+\_\+rezultatai} member variables to the output stream.}{The output operator {\ttfamily operator\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}} is overloaded to serialize a {\ttfamily Studentas} object to an output stream. It prints the {\ttfamily vardas}, {\ttfamily pavarde}, {\ttfamily egzaminas}, and {\ttfamily nd\+\_\+rezultatai} member variables to the output stream.}}\label{md__r_e_a_d_m_e_autotoc_md36}
+\begin{DoxyVerb}std::ostream& operator<<(std::ostream& output, const Studentas &student) {
+    output << student.vardas << " " << student.pavarde << " " << student.egzaminas << " ";
+    for (int pazymys : student.nd_rezultatai) {
+        output << std::to_string(pazymys) << " "; // Pries printinant pakeist int'a i string'a
+    }
+    return output;
+}
+\end{DoxyVerb}
+ \hypertarget{md__r_e_a_d_m_e_autotoc_md37}{}\doxysubsubsection{\texorpdfstring{Input Operator ({\ttfamily operator\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}})}{Input Operator ({\ttfamily operator\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}})}}\label{md__r_e_a_d_m_e_autotoc_md37}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md38}{}\doxyparagraph{\texorpdfstring{The input operator {\ttfamily operator\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}} is overloaded to deserialize a {\ttfamily Studentas} object from an input stream. It reads {\ttfamily vardas}, {\ttfamily pavarde}, {\ttfamily egzaminas}, and {\ttfamily nd\+\_\+rezultatai} from the input stream and constructs a {\ttfamily Studentas} object accordingly.}{The input operator {\ttfamily operator\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}} is overloaded to deserialize a {\ttfamily Studentas} object from an input stream. It reads {\ttfamily vardas}, {\ttfamily pavarde}, {\ttfamily egzaminas}, and {\ttfamily nd\+\_\+rezultatai} from the input stream and constructs a {\ttfamily Studentas} object accordingly.}}\label{md__r_e_a_d_m_e_autotoc_md38}
+\begin{DoxyVerb}std::istream& operator>>(std::istream& input, Studentas &student) {
+    input >> student.vardas >> student.pavarde;
+    input >> student.egzaminas;
+    student.nd_rezultatai.clear();
+    int pazymys;
+    while (input >> pazymys) {
+        student.nd_rezultatai.push_back(pazymys);
+    }
+    return input;
+}
+\end{DoxyVerb}
+ \hypertarget{md__r_e_a_d_m_e_autotoc_md39}{}\doxysection{\texorpdfstring{Running a Makefile for C/\+C++ Projects}{Running a Makefile for C/\+C++ Projects}}\label{md__r_e_a_d_m_e_autotoc_md39}
+This guide will walk you through the process of running a Makefile for compiling and executing C/\+C++ programs on both mac\+OS and Windows. If this tutorial does not work for you, try these solutions \href{https://stackoverflow.com/questions/32127524/how-to-install-and-use-make-in-windows}{\texttt{ Makefile}}.\hypertarget{md__r_e_a_d_m_e_autotoc_md40}{}\doxysubsection{\texorpdfstring{Prerequisites}{Prerequisites}}\label{md__r_e_a_d_m_e_autotoc_md40}
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Make Installation\+:}}
+\begin{DoxyItemize}
+\item mac\+OS\+: Make is usually pre-\/installed. You can verify by opening a terminal and typing {\ttfamily make -\/v}.
+\item Windows\+: Install Make using a package manager like \href{https://chocolatey.org/}{\texttt{ Chocolatey}}. Run {\ttfamily choco install make} in Power\+Shell or Command Prompt.
+\end{DoxyItemize}
+\end{DoxyEnumerate}
+\begin{DoxyItemize}
+\item {\bfseries{C/\+C++ Compiler\+:}}
+\begin{DoxyItemize}
+\item Ensure you have a C/\+C++ compiler installed. On mac\+OS, Clang is typically pre-\/installed. On Windows, you can use Min\+GW or Cygwin.
+\end{DoxyItemize}
+\item {\bfseries{Text Editor or IDE\+:}}
+\begin{DoxyItemize}
+\item Use a text editor or IDE to write your C/\+C++ code and Makefile. Popular choices include Visual Studio Code, Sublime Text, Atom, etc.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md42}{}\doxysubsubsection{\texorpdfstring{1. Write Your Code}{1. Write Your Code}}\label{md__r_e_a_d_m_e_autotoc_md42}
+
+\begin{DoxyItemize}
+\item Create your C/\+C++ code in one or more {\ttfamily .cpp} or {\ttfamily .c} files.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md43}{}\doxysubsubsection{\texorpdfstring{2. Write Makefile}{2. Write Makefile}}\label{md__r_e_a_d_m_e_autotoc_md43}
+
+\begin{DoxyItemize}
+\item Create a file named {\ttfamily Makefile} (without extension) in the same directory as your source code.
+\item Open {\ttfamily Makefile} in a text editor and define build rules.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md44}{}\doxysubsubsection{\texorpdfstring{3. Open Terminal/\+Command Prompt}{3. Open Terminal/\+Command Prompt}}\label{md__r_e_a_d_m_e_autotoc_md44}
+
+\begin{DoxyItemize}
+\item mac\+OS\+: Open Terminal.
+\item Windows\+: Open Command Prompt or Power\+Shell.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md45}{}\doxysubsubsection{\texorpdfstring{4. Navigate to Project Directory}{4. Navigate to Project Directory}}\label{md__r_e_a_d_m_e_autotoc_md45}
+
+\begin{DoxyItemize}
+\item Use {\ttfamily cd} command to navigate to the directory containing your code and Makefile.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md46}{}\doxysubsubsection{\texorpdfstring{5. Run Make}{5. Run Make}}\label{md__r_e_a_d_m_e_autotoc_md46}
+
+\begin{DoxyItemize}
+\item Type {\ttfamily make} and press Enter. This executes the default target ({\ttfamily all}) in the Makefile.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md47}{}\doxysubsubsection{\texorpdfstring{6. Run Your Program}{6. Run Your Program}}\label{md__r_e_a_d_m_e_autotoc_md47}
+
+\begin{DoxyItemize}
+\item After successful build, an executable file (e.\+g., {\ttfamily run} on mac\+OS or {\ttfamily run.\+exe} on Windows) will be generated in the same directory.
+\item Run the program by typing {\ttfamily ./run} on mac\+OS or {\ttfamily run.\+exe} on Windows, and press Enter.
+\end{DoxyItemize}
+
+Congratulations! You\textquotesingle{}ve successfully compiled and executed your C/\+C++ program using a Makefile. If you encounter any errors during compilation, check your Makefile and source code for issues.\hypertarget{md__r_e_a_d_m_e_autotoc_md48}{}\doxysubsubsection{\texorpdfstring{6. How To Run Code With Flags}{6. How To Run Code With Flags}}\label{md__r_e_a_d_m_e_autotoc_md48}
+
+\begin{DoxyItemize}
+\item Type {\ttfamily make optimize}
+\item Type {\ttfamily ./run\+\_\+o1} {\ttfamily ./run\+\_\+o2} {\ttfamily ./run\+\_\+o3} 
+\end{DoxyItemize}
