@@ -160,6 +160,6 @@ void test_fill_time() {
         std::chrono::duration<double> elapsed_v2 = finish_v2 - start_v2;
 
         // Print results for current size
-        std::cout << sz << " | " << elapsed_v1.count() << " | " << elapsed_v2.count() << " | " << v1.capacity() - v1.size() << " | " << reallocations_v1 << " | " <<reallocations_v2 << std::endl;
+        std::cout << sz << " | " << elapsed_v1.count() << " | " << elapsed_v2.count() <<  " | " << reallocations_v1 << " | " <<reallocations_v2 << std::endl;
     }
 }
