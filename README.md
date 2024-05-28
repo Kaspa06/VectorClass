@@ -136,6 +136,60 @@
 | 10000000 | 0.206448 s       | 0.183509 s         | 24                        | 24                   |
 | 10000000 | 2.0415s          | 1.77326s           | 27                        | 27                   |
 
+### Testing `std::vector` and `vector` file generating
+
+| Size    | std::vector Time | Custom vector Time |
+| ------- | ---------------- | ------------------ |
+| 1000    | 0.013903s        | 0.010972s          |
+| 10000   | 0.100278s        | 0.105718s          |
+| 100000  | 0.964256s        | 1.06715s           |
+| 1000000 | 9.63277s         | 10.2358s           |
+| 1000000 | 117.533s         | 106.347s           |
+
+### Testing `std::vector` and `vector` file read/sort/divide time
+
+| `std::vector`                | 1000 students | 10000 students | 100000 students | 1000000 students | 10000000 students |
+| ---------------------------- | ------------- | -------------- | --------------- | ---------------- | ----------------- |
+| Skaitymas uztruko:           | 0.015444s     | 0.166344s      | 1.59188s        | 15.4619s         | 165.159s          |
+| Rusiavimas uztruko:          | 0.006081s     | 0.0552494s     | 0.538313s       | 6.18915s         | 60.0473s          |
+| Studentu skirstymas uztruko: | 0.002001s     | 0.00835907s    | 0.0876151s      | 1.10855s         | 11.3426s          |
+
+| vector                       | 1000 students | 10000 students | 100000 students | 1000000 students | 10000000 students |
+| ---------------------------- | ------------- | -------------- | --------------- | ---------------- | ----------------- |
+| Skaitymas uztruko:           | 0.008976000s  | 0.085770000s   | 0.831775000s    | 8.325740000s     | 84.65230s         |
+| Rusiavimas uztruko:          | 0.003989000s  | 0.092781000s   | 0.4375302s      | 5.6458932s       | 58.65063s         |
+| Studentu skirstymas uztruko: | 0.000998000s  | 0.010970000s   | 0.099732000s    | 1.096098000s     | 11.39806s         |
+
+### Installing Inno Setup Compiler
+
+1. Open your web browser and go to the official Inno Setup website: Inno Setup.
+2. Locate the downloaded setup file (e.g., `is-X.X.X.exe`).
+3. Double-click the setup file to start the installation process.
+4. Follow the on-screen instructions to complete the installation. You can use the default settings.
+
+### Creating a Simple Installer Script
+
+1. Open the Inno Setup Compiler from the Start Menu or desktop shortcut.
+2. Click on "File" and then "New" to create a new script. The "New Script Wizard" will open.
+3. Follow the steps in the wizard:
+
+- Application Information: Enter your application's name, version, and publisher information.
+- Application Folder: Specify the default installation folder (e.g., {pf}\MyApp for Program Files).
+- Application Files: Add the files you want to include in your installer (e.g., executable files, DLLs, etc.).
+- Application Icons: Specify any shortcuts to create (e.g., desktop or Start Menu shortcuts).
+- Setup Languages: Select the languages you want to support in your installer.
+
+4. Review your settings and click "Finish." The wizard will generate a basic script.
+
+### Compiling and Running the Script
+
+1. After the script is generated, review it in the Inno Setup Compiler. Make any necessary changes or customizations.
+2. Save your script by clicking "File" and then "Save As." Give it a meaningful name (e.g., setup.iss).
+3. To compile the script, click "Build" and then "Compile" (or press F9). The compiler will create an installer executable based on your script.
+4. Once the compilation is complete, you will see a message indicating that the setup has been compiled successfully.
+5. Locate the compiled installer executable (e.g., setup.exe) in the output directory specified in your script.
+6. Run the installer to test it and ensure everything works as expected.
+
 # Abstract Class "Zmogus"
 
 #### An abstract class in C++ is a class that contains at least one pure virtual function. A pure virtual function is a virtual function for which we provide only the declaration in the base class, without providing any implementation. Abstract classes are designed to be used as base classes, and they cannot be instantiated directly. Instead, they are intended to serve as interfaces that define a common set of methods that derived classes must implement.
